@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING
     },
-    last_sign_in: {
+    lastSignIn: {
       allowNull: true,
       type: DataTypes.DATE
     },
