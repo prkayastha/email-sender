@@ -1,0 +1,14 @@
+{
+    "development": {
+        "seperateUsername": true,
+        "sendConfirmationEmail": false
+    },
+    "test":{
+        "seperateUsername": false,
+        "sendConfirmationEmail": false
+    },
+    "production": {
+        "seperateUsername": false,
+        "sendConfirmationEmail": false
+    }
+}

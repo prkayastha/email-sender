@@ -1,8 +1,15 @@
+/**
+ * Class for users
+ */
 class Users {
+
+	/**
+	 * initiate instance of user
+	 */
 	constructor() {
 		this.id = 0;
 		this.email = null;
-		this.username = this.email;
+		this.username = null;
 		this.lastSignIn = null;
 		this.deleted = false;
 		this.active = false;
@@ -10,11 +17,20 @@ class Users {
 		this.updatedAt = null;
 	}
 
-	setData(source) {
-		for (const attr in Object.keys(this)) {
+	/**
+	 * set user information to user object
+	 * @param {any} source user informatioin
+	 * @param {boolean} seperateUsername boolean value to indicate if system uses email as username
+	 */
+	setData(source, seperateUsername = false) {
+		for (const attr of Object.keys(this)) {
 			if (!!source[attr]) {
-				this.attr = source[attr]
+				this[attr] = source[attr];
 			}
+		}
+
+		if (!seperateUsername) {
+			this.username = this.email;
 		}
 	}
 }
