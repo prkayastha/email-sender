@@ -1,6 +1,11 @@
 'use strict';
 
+const nodemailer = require('nodemailer');
+const env = process.env.NODE_ENV || 'development';
+const settings = require('../../config/settings.json')[env];
+
 const models = require('../../models');
+
 const successResponse = require('../../prototypes/responses/user/add');
 const UserAddError = require('../../prototypes/responses/user/error.add');
 const messages = require('../../resources/string/resources');
@@ -10,12 +15,15 @@ const messages = require('../../resources/string/resources');
  * @param {User} user User object to be inserted into user table
  */
 const add = function (user) {
+    const isSendEmail = settings.sendConfirmationEmail || false;
     return checkUnique(user.email, user.username).then(result => {
         if (result) {
             return models.Users.create(user).then(user => {
                 const response = successResponse.getSuccessResponse(200, messages.user.add);
                 response.user = user;
-
+                if (isSendEmail) {
+                    sendConfirmationEmail(user.email);
+                }
                 return Promise.resolve(response);
             });
         }
@@ -59,6 +67,33 @@ const checkUnique = function (emailString, usernameString) {
         }
         return Promise.resolve(true);
     });
+}
+
+const sendConfirmationEmail = function (recipientEmail) {
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: settings.senderEmail
+    });
+
+    let body = messages.user.confirmEmail;
+
+    transporter.sendMail(
+        {
+            from: settings.senderEmail.user,
+            to: recipientEmail,
+            subject: 'Confirmation',
+            html: body
+        },
+        function (err, info) {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log(info);
+            }
+        }
+    );
 }
 
 module.exports = add;
