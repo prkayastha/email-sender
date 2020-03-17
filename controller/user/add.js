@@ -10,7 +10,7 @@ const successResponse = require('../../prototypes/responses/user/add');
 const UserAddError = require('../../prototypes/responses/user/error.add');
 const messages = require('../../resources/string/resources');
 const stringUtils = require('../../utils/string-formatter');
-const hashUtils = require('./hashUtils');
+const hashUtils = require('../../utils/hashUtils');
 
 /**
  * add the use to the Users table

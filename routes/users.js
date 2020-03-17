@@ -20,4 +20,15 @@ router.post('/add', function (req, res) {
   });
 });
 
+router.get('/activate/:hash', function(req, res){
+  const hashString = req.params.hash;
+  const userEmail = req.query.email;
+
+  userOperation.activate(hashString, userEmail).then(activationResponse => {
+    res.send(activationResponse);
+  }).catch(error => {
+    errorHandler(res, error);
+  });
+});
+
 module.exports = router;
