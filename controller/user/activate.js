@@ -16,27 +16,29 @@ const activate = function (hash, userEmail) {
         email: userEmail,
         deleted: false
     };
-    return models.Users.find(whereCondition).then(user => {
+    return models.Users.findOne({ where: whereCondition }).then(user => {
         const matches = hashUtils.compareHash(hash, user);
-
-        if (!matches) {
+        if (!matches)
+         {
             const message = stringResources.error.user.userNotFoundByEmail;
             const error = new UserNotFoundError(stringUtils.format(message, userEmail));
+            error.statusCode = 400;
             throw error;
         }
 
         const updateData = { active: true };
-        return models.Users.update(updateData, whereCondition).then(result => {
+        return models.Users.update(updateData, { where: whereCondition }).then(result => {
             if (result < 0) {
                 const message = stringResources.error.user.updateActivation;
                 const error = new UserUpdateError(stringUtils.format(message, userEmail));
+                error.statusCode = 400;
                 throw error;
             }
 
             const message = stringResources.user.activateSuccess;
             const response = SuccessResponse.getSuccessResponse(200, stringUtils.format(message, userEmail));
             return Promise.resolve(response);
-        })
+        });
     });
 }
 
