@@ -1,4 +1,6 @@
 const UserAddError = require('../../prototypes/responses/user/error.add');
+const UserNotFoundError = require('../../prototypes/responses/user/error.user.not.found');
+const UserUpdateError = require('../../prototypes/responses/user/error.update');
 
 /**
  * function to handle the errors
@@ -9,7 +11,9 @@ const handle = function(res, error) {
     console.log(error);
     let response = null;
     switch (true) {
-        case error instanceof UserAddError: {
+        case (error instanceof UserAddError
+            || error instanceof UserNotFoundError
+            || error instanceof UserUpdateError ): {
             response = {
                 statusCode: error.statusCode || 500,
                 message: error.message
