@@ -1,6 +1,6 @@
 {
     "development": {
-        "apiURL": "http://locahost:300",
+        "apiURL": "http://locahost:3000",
         "seperateUsername": true,
         "sendConfirmationEmail": true,
         "senderEmail": {
@@ -13,7 +13,7 @@
         }
     },
     "test":{
-        "apiURL": "http://locahost:300",
+        "apiURL": "http://locahost:3000",
         "seperateUsername": false,
         "sendConfirmationEmail": false,
         "senderEmail": {
