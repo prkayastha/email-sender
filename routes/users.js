@@ -16,10 +16,21 @@ router.post('/add', function (req, res) {
   userOperation.add(user).then(userResponse => {
     res.send(userResponse);
   }).catch(error => {
-    errorHandler(res, error)
+    errorHandler(res, error);
   });
 });
 
+/* Delete user by Id */
+router.delete('/delete/:userId', function(req, res){
+  const userId = req.params.userId;
+  userOperation.deleteUser(userId).then(userResponse => {
+    res.send(userResponse);
+  }).catch(error => {
+    errorHandler(res, error);
+  });
+});
+
+/* Activate user */
 router.get('/activate/:hash', function(req, res){
   const hashString = req.params.hash;
   const userEmail = req.query.email;
