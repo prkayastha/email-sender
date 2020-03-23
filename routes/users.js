@@ -54,4 +54,28 @@ router.get('/activate/:hash', function(req, res){
   });
 });
 
+/* list all the users */
+router.get('/list', function(req, res) {
+  const offset = req.query.offset || 0;
+  const limit = req.query.limit || 0;
+  const orderBy = req.query.orderBy || [];
+  const searchQuery = req.query.searchString || '';
+
+  userOperation.list(offset, limit, orderBy, searchQuery).then(users => {
+    res.send(users);
+  }).catch(error => {
+    errorHandler(res, error);
+  });
+});
+
+/* get users by id */
+router.get('/:userId', function(req, res){
+  const userId = req.params.userId;
+  userOperation.get(userId).then(userResponse => {
+    res.send(userResponse);
+  }).catch(error => {
+    errorHandler(res, error);
+  });
+});
+
 module.exports = router;
