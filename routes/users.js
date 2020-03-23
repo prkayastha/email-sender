@@ -20,6 +20,18 @@ router.post('/add', function (req, res) {
   });
 });
 
+/* update user information */
+router.put('/update/:userId', function(req, res) {
+  const userId = req.params.userId;
+  const user = new User();
+  user.setData(req.body, settings.seperateUsername);
+  userOperation.update(userId, user).then(userResponse => {
+    res.send(userResponse);
+  }).catch(error => {
+    errorHandler(res, error);
+  });
+});
+
 /* Delete user by Id */
 router.delete('/delete/:userId', function(req, res){
   const userId = req.params.userId;

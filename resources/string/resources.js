@@ -6,7 +6,8 @@ const messages = {
         <p>Thank You</p>\
         <p>Yours Sincere,<br/>The Team</p>',
         activateSuccess: 'User with email {0} activated in the system.',
-        deleteSuccess: 'User with id {0} has been deleted from the system'
+        deleteSuccess: 'User with id {0} has been deleted from the system',
+        updateSuccess: 'User with id {0} has been updated in the system'
     },
     error: {
         user: {
@@ -15,7 +16,8 @@ const messages = {
             userNotFoundByEmail: 'Cannot find user registered to our system with email \'{0}\'',
             userNotFoundById: 'Cannot find user registered to our system with id {0}',
             updateActivation: 'Cannot activate user with email \'{0}\'',
-            updateDelete: 'Cannot delete user with id {0}'
+            updateDelete: 'Cannot delete user with id {0}',
+            updateFailure: 'Cannot update user with id {0}'
         } 
     }
 }
