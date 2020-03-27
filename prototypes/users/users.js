@@ -24,7 +24,7 @@ class Users {
 	 */
 	setData(source, seperateUsername = false) {
 		for (const attr of Object.keys(this)) {
-			if (!!source[attr]) {
+			if (attr!=='password' && !!source[attr]) {
 				this[attr] = source[attr];
 			}
 		}

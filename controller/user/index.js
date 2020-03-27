@@ -4,6 +4,7 @@ const deleteUser = require('./delete');
 const list = require('./list');
 const get = require('./get-user');
 const update = require('./update');
+const changePassword = require('./changePassword');
 
 module.exports = {
     add,
@@ -11,5 +12,6 @@ module.exports = {
     deleteUser,
     list,
     get,
-    update
+    update,
+    changePassword
 };

@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   User.associate = function (models) {
     // associations can be defined here
+    models.Users.hasMany(models.Password);
   };
   return User;
 };

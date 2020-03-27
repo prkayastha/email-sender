@@ -1,6 +1,8 @@
 const UserAddError = require('../../prototypes/responses/user/error.add');
 const UserNotFoundError = require('../../prototypes/responses/user/error.user.not.found');
 const UserUpdateError = require('../../prototypes/responses/user/error.update');
+const PasswordNotMatch = require('../../prototypes/responses/password/password-not-match');
+const PasswordRepeat = require('../../prototypes/responses/password/repeat-password');
 
 /**
  * function to handle the errors
@@ -13,7 +15,9 @@ const handle = function(res, error) {
     switch (true) {
         case (error instanceof UserAddError
             || error instanceof UserNotFoundError
-            || error instanceof UserUpdateError ): {
+            || error instanceof UserUpdateError
+            || error instanceof PasswordNotMatch
+            || error instanceof PasswordRepeat ): {
             response = {
                 statusCode: error.statusCode || 500,
                 message: error.message

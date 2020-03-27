@@ -9,6 +9,9 @@ const messages = {
         deleteSuccess: 'User with id {0} has been deleted from the system',
         updateSuccess: 'User with id {0} has been updated in the system'
     },
+    password: {
+        changeSuccess: 'Password has been changed.'
+    },
     error: {
         user: {
             multipleEmail: 'User exists in the system.',
@@ -18,7 +21,11 @@ const messages = {
             updateActivation: 'Cannot activate user with email \'{0}\'',
             updateDelete: 'Cannot delete user with id {0}',
             updateFailure: 'Cannot update user with id {0}'
-        } 
+        },
+        password: {
+            confirmationError: 'Re-confirm the passwords. Password do not match.',
+            passwordRepeatError: 'Enter a new password. You cannot use last {0} password.'
+        }
     }
 }
 
