@@ -11,9 +11,10 @@ const errorHandler = require('../controller/errorHandler');
 
 /* Post user information */
 router.post('/add', function (req, res) {
+  const passwordString = req.body.password || 'test';
   const user = new User();
   user.setData(req.body, settings.seperateUsername);
-  userOperation.add(user).then(userResponse => {
+  userOperation.add(user, passwordString).then(userResponse => {
     res.send(userResponse);
   }).catch(error => {
     errorHandler(res, error);
