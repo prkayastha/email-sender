@@ -17,7 +17,8 @@
             "hashSalt": "!==qwerty//poiu",
             "maxPasswordLife": 90,
             "tokenLife": 20
-        }
+        },
+        "tokenSecret": "My Secret Key"
     },
     "test":{
         "apiURL": "http://locahost:3000",
@@ -30,7 +31,15 @@
             "clientSecret": "jn_vXBmu3qKn00zBJT0lsXQr",
             "refreshToken": "1/oPlWRhr524EwG71gXjiNh134Bg8aA-GJdCIQgIxadd9K11ljlZCV1xHKtbKVfmzS",
             "accessToken": "ya29.GltqBxebJ5OxgoSJG9MOlUmVi5Cdj0lXctcdBW_aclsf-N-xCB68PP_F8Gjv8545R65-ov49uthLmes5rop4kPCbQgEHVuxbZv--06o4Bul_6d-DXYDXnIiHpcaF"
-        }
+        },
+        "authentication": {
+            "preventPasswordHistory": 3,
+            "maxFailedAttemp": 5,
+            "hashSalt": "!==qwerty//poiu",
+            "maxPasswordLife": 90,
+            "tokenLife": 20
+        },
+        "tokenSecret": "My Secret Key"
     },
     "production": {
         "apiURL": "http://locahost:3000",
@@ -43,6 +52,14 @@
             "clientSecret": "jn_vXBmu3qKn00zBJT0lsXQr",
             "refreshToken": "1/oPlWRhr524EwG71gXjiNh134Bg8aA-GJdCIQgIxadd9K11ljlZCV1xHKtbKVfmzS",
             "accessToken": "ya29.GltqBxebJ5OxgoSJG9MOlUmVi5Cdj0lXctcdBW_aclsf-N-xCB68PP_F8Gjv8545R65-ov49uthLmes5rop4kPCbQgEHVuxbZv--06o4Bul_6d-DXYDXnIiHpcaF"
-        }
+        },
+        "authentication": {
+            "preventPasswordHistory": 3,
+            "maxFailedAttemp": 5,
+            "hashSalt": "!==qwerty//poiu",
+            "maxPasswordLife": 90,
+            "tokenLife": 20
+        },
+        "tokenSecret": "My Secret Key"
     }
 }
