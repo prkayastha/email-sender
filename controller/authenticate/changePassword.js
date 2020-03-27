@@ -6,7 +6,7 @@ const stringUtils = require('../../utils/string-formatter');
 const env = process.env.NODE_ENV || 'development';
 const settings = require('../../config/settings.json')[env];
 
-const Password = require('../../prototypes/users/password');
+const Password = require('../../prototypes/password/password');
 const PasswordNotMatch = require('../../prototypes/responses/password/password-not-match');
 const PasswordRepeat = require('../../prototypes/responses/password/repeat-password');
 const SuccessResponse = require('../../prototypes/responses/global.success');
