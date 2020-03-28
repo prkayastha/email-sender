@@ -8,6 +8,9 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var passwords = require('./routes/password');
+var auth = require('./routes/authenticate');
+var token = require('./controller/authenticate/token');
+const errorHandler = require('./controller/errorHandler');
 
 var app = express();
 
@@ -26,9 +29,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 db.sync();
 
+app.use(token.checkToken.unless({ path: ['/auth/check'] }));
 app.use('/', routes);
 app.use('/user', users);
 app.use('/password', passwords);
+app.use('/auth', auth);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
@@ -43,6 +48,9 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
+        if (err.name === 'UnauthorizedError') {
+            return errorHandler(res, err);
+        }
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,

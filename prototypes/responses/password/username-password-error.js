@@ -12,4 +12,4 @@ class UsernamePasswordNotMatchError extends ErrorResponse {
     }
 }
 
-module.exports = PasswordNotMatch;
+module.exports = UsernamePasswordNotMatchError;

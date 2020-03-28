@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const ejwt = require('express-jwt');
 const env = process.env.NODE_ENV || 'development';
 const settings = require('../../config/settings.json')[env];
 
@@ -11,6 +12,9 @@ const generate = function (user) {
     return jwt.sign(user, settings.tokenSecret, { expiresIn: lifeInMinute * 60 });
 };
 
+const checkToken = ejwt({ secret: settings.tokenSecret });
+
 module.exports = {
-    generate
+    generate,
+    checkToken
 };

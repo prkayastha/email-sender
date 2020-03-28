@@ -4,7 +4,7 @@ const deleteUser = require('./delete');
 const list = require('./list');
 const get = require('./get-user');
 const update = require('./update');
-const changePassword = require('./changePassword');
+const changePassword = require('../authenticate/changePassword');
 
 module.exports = {
     add,

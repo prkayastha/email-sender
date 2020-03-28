@@ -8,7 +8,7 @@ const models = require('../../models');
 
 const successResponse = require('../../prototypes/responses/user/add');
 const UserAddError = require('../../prototypes/responses/user/error.add');
-const Password = require('../../prototypes/users/password');
+const Password = require('../../prototypes/password/password');
 const messages = require('../../resources/string/resources');
 const stringUtils = require('../../utils/string-formatter');
 const hashUtils = require('../../utils/hashUtils');
