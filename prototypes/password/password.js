@@ -35,7 +35,12 @@ const generatePassword = function(plainText) {
 }
 
 const comparePassword = function(plainText, hashedString) {
-    return bcrypt.compare(plainText, hashedString);
+    return generatePassword(plainText).then(hash => {
+        if(hash!==hashedString) {
+            return Promise.resolve(false);
+        }
+        return Promise.resolve(true);
+    })
 }
 
 module.exports = Password;

@@ -12,7 +12,7 @@ const UserNotFoundError = require('../../prototypes/responses/user/error.user.no
  * @returns Promise<SuccessResponse>
  * @throws {UserNotFoundError}
  */
-const deleteUser = function (userId) {
+const deleteUser = function (userId, version) {
     const whereCondition = { id: userId, deleted: false };
     return models.Users.findOne({ where: whereCondition }).then(user => {
         if (!user) {
@@ -23,6 +23,14 @@ const deleteUser = function (userId) {
         }
 
         const updateData = { deleted: true };
+
+        if (updateData.version !== version) {
+            const error = new OptimisticLockError();
+            throw error;
+        }
+
+        updateData.version = parseInt(version, 10) + 1;
+        
         return models.Users.update(updateData, { where: whereCondition }).then(result => {
             if (result < 0) {
                 const message = stringResources.error.user.updateDelete;
