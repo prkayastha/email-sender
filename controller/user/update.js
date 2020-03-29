@@ -5,6 +5,7 @@ const stringResources = require('../../resources/string/resources');
 const stringUtils = require('../../utils/string-formatter');
 
 const UserNotFoundError = require('../../prototypes/responses/user/error.user.not.found');
+const OptimisticLockError = require('../../prototypes/responses/optimistic-lock-error');
 
 /**
  * function to update user by id. Attribute that are to be updated must be passed. All the other attributes are ignored.
@@ -26,11 +27,19 @@ const update = function (userId, infoToUpdate) {
         }
 
         const updateData = user.dataValues;
+
+        if (updateData.version !== infoToUpdate.version) {
+            const error = new OptimisticLockError();
+            throw error;
+        }
+
         for(let attr of Object.keys(infoToUpdate)) {
             if(!immutableField.includes(attr) && updateData.hasOwnProperty(attr)) {
                 updateData[attr] = infoToUpdate[attr];
             }
         }
+        updateData.version = parseInt(infoToUpdate.version, 10) + 1;
+
         return models.Users.update(updateData, { where: whereCondition }).then(result => {
             if (result < 0) {
                 const message = stringResources.error.user.updateFailure;

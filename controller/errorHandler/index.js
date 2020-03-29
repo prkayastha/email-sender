@@ -5,6 +5,8 @@ const PasswordNotMatch = require('../../prototypes/responses/password/password-n
 const PasswordRepeat = require('../../prototypes/responses/password/repeat-password');
 const UsernamePasswordNotMatchError = require('../../prototypes/responses/password/username-password-error');
 
+const OptimisticLockError = require('../../prototypes/responses/optimistic-lock-error');
+
 /**
  * function to handle the errors
  * @param {res} res Node response object
@@ -29,6 +31,13 @@ const handle = function(res, error) {
         case (error.name === 'UnauthorizedError'): {
             response = {
                 statusCode: 401,
+                message: error.message
+            };
+            break;
+        }
+        case (error instanceof OptimisticLockError): {
+            response = {
+                statusCode: error.statusCode,
                 message: error.message
             };
             break;

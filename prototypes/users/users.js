@@ -15,6 +15,7 @@ class Users {
 		this.active = false;
 		this.createdAt = null;
 		this.updatedAt = null;
+		this.version = 0;
 	}
 
 	/**

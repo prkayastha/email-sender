@@ -11,7 +11,7 @@ const stringUtils = require('../../utils/string-formatter');
  * @param {string} hash hash string to be compared
  * @param {string} userEmail user email to be compared for
  */
-const activate = function (hash, userEmail) {
+const activate = function (hash, userEmail, version) {
     const whereCondition = {
         email: userEmail,
         deleted: false
@@ -27,6 +27,14 @@ const activate = function (hash, userEmail) {
         }
 
         const updateData = { active: true };
+
+        if (updateData.version !== version) {
+            const error = new OptimisticLockError();
+            throw error;
+        }
+
+        updateData.version = parseInt(version, 10) + 1;
+
         return models.Users.update(updateData, { where: whereCondition }).then(result => {
             if (result < 0) {
                 const message = stringResources.error.user.updateActivation;
