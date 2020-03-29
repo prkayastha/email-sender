@@ -5,7 +5,10 @@
     "database": "user_management",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": 0
+    "operatorsAliases": 0,
+    "define": {
+      "version": true
+    }
   },
   "test": {
     "username": "6gk68f5AKk",
@@ -13,7 +16,10 @@
     "database": "6gk68f5AKk",
     "host": "remotemysql.com",
     "dialect": "mysql",
-    "operatorsAliases": 0
+    "operatorsAliases": 0,
+    "define": {
+      "version": true
+    }
   },
   "production": {
     "username": "root",
@@ -21,6 +27,9 @@
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": 0
+    "operatorsAliases": 0,
+    "define": {
+      "version": true
+    }
   }
 }

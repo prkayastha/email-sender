@@ -28,6 +28,9 @@ const list = function (offset, limit, orders, searchString) {
     }
 
     const listQuery = {
+        include: [
+            { model: models.Roles }
+        ],
         offset: +offsetRows,
         limit: +limitRows,
         where: whereCondition

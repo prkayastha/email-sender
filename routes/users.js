@@ -4,6 +4,7 @@ var router = express.Router();
 const env = process.env.NODE_ENV || 'development';
 const settings = require(__dirname + '/../config/settings.json')[env];
 
+const jwtDecoder = require('../utils/jwt-decode');
 const userOperation = require('../controller/user');
 const User = require('../prototypes/users/users');
 
@@ -26,7 +27,10 @@ router.put('/update/:userId', function(req, res) {
   const userId = req.params.userId;
   const user = new User();
   user.setData(req.body, settings.seperateUsername);
-  userOperation.update(userId, user).then(userResponse => {
+
+  const payload = jwtDecoder(req);
+
+  userOperation.update(payload, userId, user).then(userResponse => {
     res.send(userResponse);
   }).catch(error => {
     errorHandler(res, error);

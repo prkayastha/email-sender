@@ -3,6 +3,9 @@ const UserNotFoundError = require('../../prototypes/responses/user/error.user.no
 const UserUpdateError = require('../../prototypes/responses/user/error.update');
 const PasswordNotMatch = require('../../prototypes/responses/password/password-not-match');
 const PasswordRepeat = require('../../prototypes/responses/password/repeat-password');
+const UsernamePasswordNotMatchError = require('../../prototypes/responses/password/username-password-error');
+
+const OptimisticLockError = require('../../prototypes/responses/optimistic-lock-error');
 
 /**
  * function to handle the errors
@@ -17,9 +20,24 @@ const handle = function(res, error) {
             || error instanceof UserNotFoundError
             || error instanceof UserUpdateError
             || error instanceof PasswordNotMatch
-            || error instanceof PasswordRepeat ): {
+            || error instanceof PasswordRepeat
+            || error instanceof UsernamePasswordNotMatchError): {
             response = {
                 statusCode: error.statusCode || 500,
+                message: error.message
+            };
+            break;
+        }
+        case (error.name === 'UnauthorizedError'): {
+            response = {
+                statusCode: error.statusCode || 401,
+                message: error.message
+            };
+            break;
+        }
+        case (error instanceof OptimisticLockError): {
+            response = {
+                statusCode: error.statusCode || 423,
                 message: error.message
             };
             break;

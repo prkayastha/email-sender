@@ -17,6 +17,7 @@ const messages = {
             multipleEmail: 'User exists in the system.',
             usernameUnavailable: 'Username is not available. Please use other username.',
             userNotFoundByEmail: 'Cannot find user registered to our system with email \'{0}\'',
+            userNotFoundByUsername: 'Cannot find user registered to our system with username \'{0}\'',
             userNotFoundById: 'Cannot find user registered to our system with id {0}',
             updateActivation: 'Cannot activate user with email \'{0}\'',
             updateDelete: 'Cannot delete user with id {0}',
@@ -24,7 +25,8 @@ const messages = {
         },
         password: {
             confirmationError: 'Re-confirm the passwords. Password do not match.',
-            passwordRepeatError: 'Enter a new password. You cannot use last {0} password.'
+            passwordRepeatError: 'Enter a new password. You cannot use last {0} password.',
+            usernamePasswordNotMatchError: 'Username or Password is not correct.'
         }
     }
 }

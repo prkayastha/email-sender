@@ -11,9 +11,14 @@ const UserNotFoundError = require('../../prototypes/responses/user/error.user.no
  * function to get user by id
  * @param {number} userId user id of user to be retrived
  */
-const getUserById = function(userId) {
+const getUserById = function (userId) {
     const whereCondition = { id: userId, deleted: false };
-    return models.Users.findOne({ where: whereCondition }).then(user => {
+    return models.Users.findOne({
+        include: [
+            { model: models.Roles }
+        ],
+        where: whereCondition
+    }).then(user => {
         if (!user) {
             const message = stringResources.error.user.userNotFoundById;
             const error = new UserNotFoundError(stringUtils.format(message, userId));
