@@ -30,14 +30,14 @@ const handle = function(res, error) {
         }
         case (error.name === 'UnauthorizedError'): {
             response = {
-                statusCode: 401,
+                statusCode: error.statusCode || 401,
                 message: error.message
             };
             break;
         }
         case (error instanceof OptimisticLockError): {
             response = {
-                statusCode: error.statusCode,
+                statusCode: error.statusCode || 423,
                 message: error.message
             };
             break;

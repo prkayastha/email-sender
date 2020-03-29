@@ -4,6 +4,7 @@ const SuccessResponse = require('../../prototypes/responses/global.success');
 const stringResources = require('../../resources/string/resources');
 const stringUtils = require('../../utils/string-formatter');
 
+const UnauthorizedError = require('../../prototypes/responses/authorization/unauthorized');
 const UserNotFoundError = require('../../prototypes/responses/user/error.user.not.found');
 const OptimisticLockError = require('../../prototypes/responses/optimistic-lock-error');
 
@@ -14,7 +15,13 @@ const OptimisticLockError = require('../../prototypes/responses/optimistic-lock-
  * @returns Promise<SuccessResponse>
  * @throws {UserNotFoundError}
  */
-const update = function (userId, infoToUpdate) {
+const update = function (operatorInfo, userId, infoToUpdate) {
+    if (operatorInfo.id !== userId) {
+        const error = new UnauthorizedError('Unauthorized to update');
+        error.statusCode = 400;
+        return Promise.reject(error);
+    }
+
     const whereCondition = { id: userId, deleted: false };
     const immutableField = ['id', 'lastSignIn', 'deleted', 'active', 'createdAt', 'updatedAt'];
 
