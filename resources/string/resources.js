@@ -26,7 +26,9 @@ const messages = {
         password: {
             confirmationError: 'Re-confirm the passwords. Password do not match.',
             passwordRepeatError: 'Enter a new password. You cannot use last {0} password.',
-            usernamePasswordNotMatchError: 'Username or Password is not correct.'
+            usernamePasswordNotMatchError: 'Username or Password is not correct.',
+            passwordExpireError: 'Password has reached it\'s maximum life.',
+            accountLocked: 'Your account has been locked. Please contact adminstrator.'
         }
     }
 }
