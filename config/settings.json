@@ -14,6 +14,7 @@
         "authentication": {
             "preventPasswordHistory": 3,
             "maxFailedAttemp": 5,
+            "autoUnlockAfter": 180,
             "hashSalt": "!==qwerty//poiu",
             "maxPasswordLife": 90,
             "tokenLife": 20
@@ -35,6 +36,7 @@
         "authentication": {
             "preventPasswordHistory": 3,
             "maxFailedAttemp": 5,
+            "autoUnlockAfter": 180,
             "hashSalt": "!==qwerty//poiu",
             "maxPasswordLife": 90,
             "tokenLife": 20
@@ -56,6 +58,7 @@
         "authentication": {
             "preventPasswordHistory": 3,
             "maxFailedAttemp": 5,
+            "autoUnlockAfter": 180,
             "hashSalt": "!==qwerty//poiu",
             "maxPasswordLife": 90,
             "tokenLife": 20
