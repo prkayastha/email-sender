@@ -20,6 +20,13 @@ module.exports = (sequelize, DataTypes) => {
     active: { 
       allowNull: false, 
       type: DataTypes.BOOLEAN 
+    },
+    failedAttempts: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    lastFailedAttempts: {
+      type: DataTypes.DATE,
     }
   }, {});
   User.associate = function (models) {
