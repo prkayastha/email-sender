@@ -64,7 +64,7 @@ router.get('/list', function(req, res) {
   const offset = req.query.offset || 0;
   const limit = req.query.limit || 0;
   const orderBy = req.query.orderBy || [];
-  const searchQuery = req.query.searchString || '';
+  const searchQuery = req.query.searchQuery || '';
 
   userOperation.list(offset, limit, orderBy, searchQuery).then(users => {
     res.send(users);

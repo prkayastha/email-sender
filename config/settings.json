@@ -17,7 +17,8 @@
             "autoUnlockAfter": 180,
             "hashSalt": "!==qwerty//poiu",
             "maxPasswordLife": 90,
-            "tokenLife": 20
+            "tokenLife": 20,
+            "passwordRegex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{,8}$"
         },
         "tokenSecret": "My Secret Key"
     },
@@ -39,7 +40,8 @@
             "autoUnlockAfter": 180,
             "hashSalt": "!==qwerty//poiu",
             "maxPasswordLife": 90,
-            "tokenLife": 20
+            "tokenLife": 20,
+            "passwordRegex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{,8}$"
         },
         "tokenSecret": "My Secret Key"
     },
@@ -61,7 +63,8 @@
             "autoUnlockAfter": 180,
             "hashSalt": "!==qwerty//poiu",
             "maxPasswordLife": 90,
-            "tokenLife": 20
+            "tokenLife": 20,
+            "passwordRegex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$^+=!*()@%&]).{,8}$"
         },
         "tokenSecret": "My Secret Key"
     }
