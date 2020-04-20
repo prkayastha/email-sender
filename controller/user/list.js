@@ -11,7 +11,9 @@ const models = require('../../models');
  * @param {string} searchString search value
  */
 const list = function (offset, limit, orders, searchString) {
-    const whereCondition = {};
+    const whereCondition = {
+        deleted: false
+    };
     const offsetRows = offset || 0;
     const limitRows = limit || 10;
     
