@@ -20,18 +20,21 @@ const hashUtils = require('../../utils/hashUtils');
  */
 const add = function (user, passwordString) {
     const isSendEmail = settings.sendConfirmationEmail || false;
-    let response = null;
+    var response = null;
 
     return models.sequelize.transaction(function (t) {
         return checkUnique(user.email, user.username).then(result => {
             if (result) {
-                return models.Users.create(user, { transaction: t }).then(user => {
+                return models.Users.create(user, { transaction: t }).then(userCreateObject => {
                     response = successResponse.getSuccessResponse(200, messages.user.add);
-                    response.user = user;
+                    response.user = userCreateObject;
 
-                    return Password.setPassword(user.id, passwordString);
+                    const roles = user.Roles.map(role => role.id)
+                    return userCreateObject.setRoles(roles, { transaction: t })
+                }).then(setRoleResult => {
+                    return Password.setPassword(response.user.id, passwordString);
                 }).then(passwordObject => {
-                    return models.Password.create(passwordObject, { transaction: t })
+                    return models.Password.create(passwordObject, { transaction: t });
                 });
             }
         })
