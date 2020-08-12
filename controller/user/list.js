@@ -11,7 +11,9 @@ const models = require('../../models');
  * @param {string} searchString search value
  */
 const list = function (offset, limit, orders, searchString) {
-    const whereCondition = {};
+    const whereCondition = {
+        deleted: false
+    };
     const offsetRows = offset || 0;
     const limitRows = limit || 10;
     
@@ -27,7 +29,10 @@ const list = function (offset, limit, orders, searchString) {
         ];
     }
 
+    const column = ['id', 'username', 'email', 'lastSignIn', 'createdAt'];
+
     const listQuery = {
+        attributes: ['id', 'username', 'email', 'lastSignIn', 'createdAt', 'version'],
         include: [
             { model: models.Roles }
         ],
@@ -37,6 +42,9 @@ const list = function (offset, limit, orders, searchString) {
     };
 
     if (orders != null && orders.length > 0) {
+        for(let i=0; i<orders.length; i++) {
+            orders[i][0] = column[orders[i][0]];
+        }
         listQuery.order = orders;
     }
 

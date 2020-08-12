@@ -16,6 +16,7 @@ class Users {
 		this.createdAt = null;
 		this.updatedAt = null;
 		this.version = 0;
+		this.Roles=[];
 	}
 
 	/**
