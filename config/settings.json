@@ -6,10 +6,10 @@
         "senderEmail": {
             "type": "OAuth2",
             "user": "94prajesh@gmail.com",
-            "clientId": "781039973521-1089rmqoic19ldi4octjuibg1k2925qt.apps.googleusercontent.com",
-            "clientSecret": "jn_vXBmu3qKn00zBJT0lsXQr",
-            "refreshToken": "1/oPlWRhr524EwG71gXjiNh134Bg8aA-GJdCIQgIxadd9K11ljlZCV1xHKtbKVfmzS",
-            "accessToken": "ya29.GltqBxebJ5OxgoSJG9MOlUmVi5Cdj0lXctcdBW_aclsf-N-xCB68PP_F8Gjv8545R65-ov49uthLmes5rop4kPCbQgEHVuxbZv--06o4Bul_6d-DXYDXnIiHpcaF"
+            "clientId": "N/A",
+            "clientSecret": "N/A",
+            "refreshToken": "N/A",
+            "accessToken": "N/A"
         },
         "authentication": {
             "preventPasswordHistory": 3,
@@ -29,10 +29,10 @@
         "senderEmail": {
             "type": "OAuth2",
             "user": "94prajesh@gmail.com",
-            "clientId": "781039973521-1089rmqoic19ldi4octjuibg1k2925qt.apps.googleusercontent.com",
-            "clientSecret": "jn_vXBmu3qKn00zBJT0lsXQr",
-            "refreshToken": "1/oPlWRhr524EwG71gXjiNh134Bg8aA-GJdCIQgIxadd9K11ljlZCV1xHKtbKVfmzS",
-            "accessToken": "ya29.GltqBxebJ5OxgoSJG9MOlUmVi5Cdj0lXctcdBW_aclsf-N-xCB68PP_F8Gjv8545R65-ov49uthLmes5rop4kPCbQgEHVuxbZv--06o4Bul_6d-DXYDXnIiHpcaF"
+            "clientId": "N/A",
+            "clientSecret": "N/A",
+            "refreshToken": "N/A",
+            "accessToken": "N/A"
         },
         "authentication": {
             "preventPasswordHistory": 3,
@@ -52,10 +52,10 @@
         "senderEmail": {
             "type": "OAuth2",
             "user": "94prajesh@gmail.com",
-            "clientId": "781039973521-1089rmqoic19ldi4octjuibg1k2925qt.apps.googleusercontent.com",
-            "clientSecret": "jn_vXBmu3qKn00zBJT0lsXQr",
-            "refreshToken": "1/oPlWRhr524EwG71gXjiNh134Bg8aA-GJdCIQgIxadd9K11ljlZCV1xHKtbKVfmzS",
-            "accessToken": "ya29.GltqBxebJ5OxgoSJG9MOlUmVi5Cdj0lXctcdBW_aclsf-N-xCB68PP_F8Gjv8545R65-ov49uthLmes5rop4kPCbQgEHVuxbZv--06o4Bul_6d-DXYDXnIiHpcaF"
+            "clientId": "N/A",
+            "clientSecret": "N/A",
+            "refreshToken": "N/A",
+            "accessToken": "N/A"
         },
         "authentication": {
             "preventPasswordHistory": 3,
